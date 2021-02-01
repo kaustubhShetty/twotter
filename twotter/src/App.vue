@@ -1,52 +1,17 @@
 <template>
   <div id="app">
-    @{{ user.username }} - {{ fullName }}
     <strong> Followers: </strong> {{ followers }}
-    <button @click="followUser"> 
-      Follow 
-    </button>
+    <UserProfile/>
   </div>
 </template>
 
 
 <script>
+import UserProfile from "./components/UserProfile";
 
 export default {
   name: 'App',   //You can make any key value pairs in export default
-  data(){        //data is inbuilt hence not a key value pair
-    return {
-      followers: 0,
-      user: {
-        id:1,
-        username: '_sk8erBoi',
-        firstName: 'Kaustubh',
-        lastName: 'Shetty',
-        email: 'kaustubhshetty8@gmail.com',
-        isAdmin: true
-      }
-    }
-  },
-  watch : { //watches a datapoint, and when it changes you can run a function //like setstate
-            //watch will automatically run the functions inside it to check
-    followers(newFollowerCount , oldFollowerCount){
-      if(oldFollowerCount < newFollowerCount) {
-        console.log(`${this.user.username} has gained a follower!`);
-      }
-    }
-  },
-  computed: {
-      fullName() {    //this function will generate a full Name
-        return `${this.user.firstName} ${this.user.lastName}`;
-      }
-    },
-  methods: {
-    followUser(){
-      this.followers++;
-    }  
-  }, 
-  mounted() {   //This is like init state of Flutter //Also called life cycle hook
-    this.followUser();
-  }
+  components: { UserProfile }
 }
 </script>
 
