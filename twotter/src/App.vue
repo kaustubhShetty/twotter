@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <strong> Followers: </strong> {{ followers }}
     <UserProfile/>
   </div>
 </template>
